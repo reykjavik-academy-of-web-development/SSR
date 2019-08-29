@@ -29274,7 +29274,7 @@ exports.default = function (props) {
   return _react2.default.createElement(
     'h1',
     null,
-    'hello kello'
+    'hello Bello'
   );
 };
 
