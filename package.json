@@ -13,7 +13,7 @@
   },
   "scripts": {
     "runServer": "nodemon server",
-    "start": "webpack"
+    "start": "webpack && babel-node server.js"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
