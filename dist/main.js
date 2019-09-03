@@ -29277,7 +29277,7 @@ var _Concert2 = _interopRequireDefault(_Concert);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
-    var _useState = (0, _react.useState)(props.data || JSON.parse(concertData)),
+    var _useState = (0, _react.useState)(props.data || concertData),
         _useState2 = _slicedToArray(_useState, 2),
         data = _useState2[0],
         setData = _useState2[1];
@@ -29286,8 +29286,9 @@ exports.default = function (props) {
         _useState4 = _slicedToArray(_useState3, 2),
         counter = _useState4[0],
         setCounter = _useState4[1];
+    //console.log(data)
 
-    console.log(data);
+
     var testFunc = function testFunc() {
         console.log("greetings from testFunc!");
         setCounter(counter + 1);
@@ -29303,7 +29304,7 @@ exports.default = function (props) {
         ),
         counter,
         data.results.map(function (concert, i) {
-            return _react2.default.createElement(_Concert2.default, { key: i, data: concert });
+            return _react2.default.createElement(_Concert2.default, { key: i, data: concert, token: data.token });
         })
     );
 };
@@ -29327,14 +29328,25 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function (props) {
     return _react2.default.createElement(
-        'div',
+        "div",
         null,
         _react2.default.createElement(
-            'h1',
+            "h1",
             null,
             props.data.eventDateName
         ),
-        _react2.default.createElement('img', { src: props.data.imageSource })
+        _react2.default.createElement("img", { src: props.data.imageSource }),
+        _react2.default.createElement(
+            "form",
+            { method: "post", action: "/comment" },
+            _react2.default.createElement("input", { type: "hidden", name: "token", value: props.token }),
+            "nafn: ",
+            _react2.default.createElement("input", { name: "nafn", type: "text" }),
+            "email: ",
+            _react2.default.createElement("input", { name: "email", type: "email" }),
+            _react2.default.createElement("textarea", { name: "stuff", rows: "4", cols: "50" }),
+            _react2.default.createElement("input", { type: "submit", value: "senda" })
+        )
     );
 };
 
